@@ -9,7 +9,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Farmer extends Actor
 {
     boolean stopFarmerMove = false;
-
+    
+    GreenfootImage farmer;
+    GifImage farmer_Up = new GifImage("farmer-up.gif");
+    GifImage farmer_Down = new GifImage("farmer-down.gif");
+    GifImage farmer_Right = new GifImage("farmer-right.gif");
+    GifImage farmer_Left = new GifImage("farmer-Left.gif");
+    
+    GreenfootImage pickSheep;
+    GifImage pickSheep_Up = new GifImage("pickSheep-up.gif");
+    GifImage pickSheep_Down = new GifImage("pickSheep-down.gif");
+    GifImage pickSheep_Right = new GifImage("pickSheep-right.gif");
+    GifImage pickSheep_Left = new GifImage("pickSheep-left.gif");
+    
+    
     /**
      * Act - do whatever the Farmer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -33,8 +46,9 @@ public class Farmer extends Actor
     public void moveCharacter()
     {
         if (Greenfoot.isKeyDown("right") && stopFarmerMove == false) {
+            farmer = farmer_Right.getCurrentImage();
+            setImage(farmer);
             move(4);
-
         }
         else if (Greenfoot.isKeyDown("right") && stopFarmerMove == true)
         {
@@ -42,6 +56,8 @@ public class Farmer extends Actor
             stopFarmerMove = false;
         }
         if (Greenfoot.isKeyDown("left") && stopFarmerMove == false) {
+            farmer = farmer_Left.getCurrentImage();
+            setImage(farmer);
             move(-4);
         }
         else if (Greenfoot.isKeyDown("left") && stopFarmerMove == true)
@@ -50,6 +66,8 @@ public class Farmer extends Actor
             stopFarmerMove = false;
         }
         if (Greenfoot.isKeyDown("up") && stopFarmerMove == false) {
+            farmer = farmer_Up.getCurrentImage();
+            setImage(farmer);
             setLocation(getX(), getY()-4);
         }  
         else if (Greenfoot.isKeyDown("up") && stopFarmerMove == true)
@@ -58,6 +76,8 @@ public class Farmer extends Actor
             stopFarmerMove = false;
         }
         if (Greenfoot.isKeyDown("down") && stopFarmerMove == false) {
+            farmer = farmer_Down.getCurrentImage();
+            setImage(farmer);
             setLocation(getX(), getY()+4);
         }    
         else if (Greenfoot.isKeyDown("up") && stopFarmerMove == true)
@@ -71,19 +91,10 @@ public class Farmer extends Actor
     public void hitWall()
     {
         Actor Wall;
-        Wall = getOneIntersectingObject(Gate.class);
-        Actor Wall1;
-        Wall1 = getOneIntersectingObject(Gate1.class);
+        Wall = getOneIntersectingObject(Fence.class);
         if (Wall != null) {
             stopFarmerMove = true;
             getWorld().showText("Hello world there is a gate", 200, 50);
-        }
-        else
-        {
-
-        }
-        if (Wall1 != null) {
-            stopFarmerMove = true;
         }
         else
         {
@@ -93,7 +104,7 @@ public class Farmer extends Actor
 
     public void pickSheep(){
         Actor Wall;
-        Wall = getOneIntersectingObject(Gate.class);
+        Wall = getOneIntersectingObject(ClosedFence.class);
 
     }
 

@@ -7,7 +7,12 @@ import greenfoot.*;
  */
 public class Wolf extends Actor
 {
-
+    GreenfootImage wolf;
+    GifImage wolf_Up = new GifImage("wolf-up.gif");
+    GifImage wolf_Down = new GifImage("wolf-down.gif");
+    GifImage wolf_Right = new GifImage("wolf-right.gif");
+    GifImage wolf_Left = new GifImage("wolf-left.gif");
+    
     /**
      * 
      */
