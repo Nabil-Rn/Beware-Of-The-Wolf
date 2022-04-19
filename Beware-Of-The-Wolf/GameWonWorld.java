@@ -16,7 +16,7 @@ public class GameWonWorld extends World
      */
     public GameWonWorld()
     {
-        super(560, 560, 1);
+        super(600, 600, 1);
         //gameWonMusic = new GreenfootSound("victory.wav");
         showTextWithBigBlackFont("You Win!", 180, 200);
     }

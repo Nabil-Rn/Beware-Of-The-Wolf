@@ -16,6 +16,6 @@ public class GameMenu extends World
     public GameMenu()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(560, 560, 1); 
+        super(600, 600, 1); 
     }
 }
