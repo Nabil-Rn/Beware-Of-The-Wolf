@@ -19,6 +19,7 @@ public class FarmWorld extends World
         super(600, 600, 1); 
         prepare();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -27,5 +28,15 @@ public class FarmWorld extends World
     {
         Fence fence = new Fence();
         addObject(fence,280,280);
+        Farmer farmer = new Farmer();
+        addObject(farmer,101,73);
+        Wolf wolf = new Wolf();
+        addObject(wolf,258,523);
+        Sheep sheep = new Sheep();
+        addObject(sheep,511,87);
+        Sheep sheep2 = new Sheep();
+        addObject(sheep2,487,165);
+        Sheep sheep3 = new Sheep();
+        addObject(sheep3,521,259);
     }
 }

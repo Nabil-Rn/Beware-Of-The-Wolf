@@ -18,7 +18,7 @@ public class GameWonWorld extends World
     {
         super(600, 600, 1);
         //gameWonMusic = new GreenfootSound("victory.wav");
-        showTextWithBigBlackFont("You Win!", 180, 200);
+        //showTextWithBigBlackFont("You Win!", 180, 200);
     }
 
     /**
@@ -44,6 +44,6 @@ public class GameWonWorld extends World
     
      public void stopped()
     {
-        gameWonMusic.stop();
+        //gameWonMusic.stop();
     }
 }

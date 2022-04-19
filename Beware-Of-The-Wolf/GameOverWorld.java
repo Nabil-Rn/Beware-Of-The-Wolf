@@ -17,8 +17,8 @@ public class GameOverWorld extends World
     public GameOverWorld()
     {
         super(600, 600, 1);
-        gameOverMusic = new GreenfootSound("GameOver_ Cropped");        
-        showTextWithBigBlackFont("Game Over", 180, 200);
+        //gameOverMusic = new GreenfootSound("GameOver_ Cropped");        
+        //showTextWithBigBlackFont("Game Over", 180, 200);
     }
 
     /**
@@ -35,11 +35,11 @@ public class GameOverWorld extends World
     
     public void started()
     {
-        gameOverMusic.playLoop();
+        //gameOverMusic.playLoop();
     }
     
      public void stopped()
     {
-        gameOverMusic.stop();
+        //gameOverMusic.stop();
     }
 }

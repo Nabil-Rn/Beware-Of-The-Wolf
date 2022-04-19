@@ -12,7 +12,6 @@ comment3.target=void\ moveAround()
 comment3.text=\r\n\ \r\n
 comment4.params=
 comment4.target=void\ eatFarmer()
-comment4.text=\r\n\ \r\n
 comment5.params=
 comment5.target=void\ eatSheep()
 comment6.params=
