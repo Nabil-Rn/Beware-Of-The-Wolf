@@ -1,0 +1,12 @@
+------------------------------------------------------------------------
+This is the project README file. Here, you should describe your project.
+Tell the reader (someone who does not know anything about this project)
+all they need to know. The comments should usually include at least:
+------------------------------------------------------------------------
+
+PROJECT TITLE: Beware Of The Wolf
+PURPOSE OF PROJECT: Game for Game programming
+VERSION or DATE:
+HOW TO START THIS PROJECT: organizing ideas.
+AUTHORS: Nabil Ramadan, Hibba Qaraman, Sultan Ba Hashwan, Kevin Borja
+USER INSTRUCTIONS: Beware Of The Wolf is a game made using Greenfoot  
