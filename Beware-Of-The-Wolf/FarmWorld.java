@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FarmWorld extends World
 {
-
+    Sheep sheep = new Sheep();
+    Wolf wolf = new Wolf();
+    LineOfSight los = new LineOfSight(wolf, sheep);
     /**
      * Constructor for objects of class FarmWorld.
      * 
@@ -31,12 +33,19 @@ public class FarmWorld extends World
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
         Wolf wolf = new Wolf();
-        addObject(wolf,258,523);
+        addObject(wolf,508,377);
         Sheep sheep = new Sheep();
         addObject(sheep,511,87);
         Sheep sheep2 = new Sheep();
         addObject(sheep2,487,165);
         Sheep sheep3 = new Sheep();
         addObject(sheep3,521,259);
+        addObject(los, 0, 0);
+    }
+    public LineOfSight getLOS () {
+        return los;
+    }
+    public Sheep getSheep() {
+        return sheep;
     }
 }
