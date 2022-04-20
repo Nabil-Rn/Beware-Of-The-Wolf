@@ -41,7 +41,12 @@ public class FarmWorld extends World
         Sheep sheep3 = new Sheep();
         addObject(sheep3,521,259);
         addObject(los, 0, 0);
+        ClosedFence closedFence = new ClosedFence();
+        addObject(closedFence,280,387);
+        Key key = new Key();
+        addObject(key,88,243);
     }
+
     public LineOfSight getLOS () {
         return los;
     }

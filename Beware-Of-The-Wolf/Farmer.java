@@ -11,7 +11,7 @@ public class Farmer extends Actor
     protected boolean sheepPicked;
 
     GreenfootImage farmer_animation;
-    
+
     GifImage farmer_Up = new GifImage("farmer-up.gif");
     GifImage farmer_Down = new GifImage("farmer-down.gif");
     GifImage farmer_Right = new GifImage("farmer-right.gif");
@@ -34,21 +34,12 @@ public class Farmer extends Actor
     {
         // Add your action code here.
         moveAround();
+        collectKey();
+        unlockFence();
         pickSheep();
         //farmerAnimation();
         if (isGameWon()) {
             transitionToGameWorld();
-        }
-    }
-
-    public void pickSheep()
-    {
-        Actor sheep = getOneIntersectingObject(Sheep.class);
-        if (sheep != null) {
-            World world = getWorld();
-            world.removeObject(sheep);
-            Greenfoot.playSound("sheep_cry.wav");
-            sheepPicked = true;
         }
     }
 
@@ -116,6 +107,37 @@ public class Farmer extends Actor
             Greenfoot.playSound("bump.wav");
         }
 
+    }
+
+    public void pickSheep()
+    {
+        Actor sheep = getOneIntersectingObject(Sheep.class);
+        if (sheep != null) {
+            World world = getWorld();
+            world.removeObject(sheep);
+            Greenfoot.playSound("sheep_cry.wav");
+            sheepPicked = true;
+        }
+    }
+    
+    public void collectKey()
+    {
+        Actor key = getOneIntersectingObject(Key.class);
+        if (key != null) {
+            World world = getWorld();
+            world.removeObject(key);
+            Greenfoot.playSound("Collect_Key.wav");
+        }
+    }
+    
+    public void unlockFence() 
+    { Actor closedFence = getOneIntersectingObject(ClosedFence.class);
+        if (closedFence != null) {
+            World world = getWorld();
+            world.removeObject(closedFence);
+            world.addObject(new OpenFence(),280,387);
+            Greenfoot.playSound("Unlock_Fence.wav"); 
+        }
     }
 
     public boolean isGameWon()

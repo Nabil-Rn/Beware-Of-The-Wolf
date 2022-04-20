@@ -90,7 +90,7 @@ public class Wolf extends Actor
                     {
                         //turn(270);
                         //setRotation(270);
-                        setLocation(getX(), getY() + 10);
+                        setLocation(getX(), getY() + 20);
                         wolf_animation = wolf_Down.getCurrentImage();
                         setImage(wolf_animation);
                     }
@@ -107,7 +107,7 @@ public class Wolf extends Actor
                     {
                         //turn(90);
                         //setRotation(90);
-                        setLocation(getX(), getY() - 10);
+                        setLocation(getX(), getY() - 20);
                         wolf_animation = wolf_Up.getCurrentImage();
                         setImage(wolf_animation);
                     }
