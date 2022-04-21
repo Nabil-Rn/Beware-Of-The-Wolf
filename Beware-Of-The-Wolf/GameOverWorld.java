@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class GameOverWorld extends World
 {
-    
+
     private GreenfootSound gameOverMusic;
 
     /**
@@ -17,7 +17,7 @@ public class GameOverWorld extends World
     public GameOverWorld()
     {
         super(600, 600, 1);
-        //gameOverMusic = new GreenfootSound("GameOver_ Cropped");        
+        gameOverMusic = new GreenfootSound("GameOver_ Cropped.wav");        
         //showTextWithBigBlackFont("Game Over", 180, 200);
     }
 
@@ -32,14 +32,14 @@ public class GameOverWorld extends World
         bg.setColor(Color.BLACK);
         bg.drawString(message, x, y);
     }
-    
+
     public void started()
     {
-        //gameOverMusic.playLoop();
+        gameOverMusic.playLoop();
     }
-    
-     public void stopped()
+
+    public void stopped()
     {
-        //gameOverMusic.stop();
+        gameOverMusic.stop();
     }
 }
