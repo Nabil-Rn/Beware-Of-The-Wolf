@@ -48,6 +48,7 @@ public class FarmWorld extends World
         addObject(closedFence,300,407);
         Key key = new Key();
         addObject(key,88,243);
+
     }
 
     public void started()

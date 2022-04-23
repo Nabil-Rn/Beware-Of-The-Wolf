@@ -28,11 +28,11 @@ public class Start_Button extends Actor
 
         if (Greenfoot.mouseClicked(this))
         {   
-            World MyWorld = getWorld();
-            getWorld().stopped();
+            World currentWorld = getWorld();
+            currentWorld.stopped();
             World farmWorld =  new FarmWorld();
-            farmWorld.started();
             Greenfoot.setWorld(farmWorld);
+            farmWorld.started();
         }
     }
 }

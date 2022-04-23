@@ -7,7 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class ClosedFence extends Actor
-{
+{   
+
+    GreenfootImage closedLeft = new GreenfootImage("closedFence-left.png");
+    GreenfootImage closedRight = new GreenfootImage("closedFence-right.png");
+
     /**
      * Act - do whatever the ClosedFence wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

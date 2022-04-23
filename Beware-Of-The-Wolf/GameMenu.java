@@ -16,9 +16,13 @@ public class GameMenu extends World
      */
     public GameMenu()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 600x600 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
+        
+        //Menu Music
         gameMenuMusic= new GreenfootSound("GameMenu_Faded.wav");
+        
+        //Game Menu Screen
         prepare();
     }
 
@@ -39,8 +43,11 @@ public class GameMenu extends World
     private void prepare()
     {
         Start_Button start_Button = new Start_Button();
-        addObject(start_Button,300,383);
+        addObject(start_Button,170,365);
+        Controls_Button controls_Button = new Controls_Button();
+        addObject(controls_Button,170,432);
         Exit_Button exit_Button = new Exit_Button();
-        addObject(exit_Button,300,461);
+        addObject(exit_Button,170,499);
+    
     }
 }

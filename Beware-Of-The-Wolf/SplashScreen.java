@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SplashScreen extends World
 {
-    double timeWelcomeScreenCreation = System.currentTimeMillis();
+    private GreenfootSound gameMenuMusic;
+    
     //Capture the duration time of the WelcomeScreen
+    double timeSplashScreenCreation = System.currentTimeMillis();
+    
     /**
      * Constructor for objects of class SplashScreen.
      * 
@@ -18,21 +21,29 @@ public class SplashScreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
+        
     }
-    
-     public void act()
-    {
-        int timerValue = (int) (System.currentTimeMillis() - timeWelcomeScreenCreation)/1000; // in terms of milliseconds
-        //store timer in a int variable
 
+    public void act()
+    {
+        //Store timer in a int variable
+        int timerValue = (int) (System.currentTimeMillis() - timeSplashScreenCreation)/1000; 
+        // in terms of milliseconds
+        
         if (Greenfoot.isKeyDown("space")) //let User press "Space bar" to switch to the MainScreen
         {
-            Greenfoot.setWorld(new GameMenu()); 
-        }
+            GameMenu gameMenu = new GameMenu();
+            Greenfoot.setWorld(gameMenu); 
+            gameMenu.started();
+            
 
-        if (System.currentTimeMillis() >= (timeWelcomeScreenCreation + (3 * 1000))) //let Timer switch to the MainScreen
-        {
-            Greenfoot.setWorld(new GameMenu()); 
+        }
+        if (System.currentTimeMillis() >= (timeSplashScreenCreation + (3 * 1000))) //let Timer switch to the MainScreen
+        { 
+            World gameMenu = new GameMenu();
+            Greenfoot.setWorld(gameMenu); 
+            gameMenu.started();
         }
     }
+
 }

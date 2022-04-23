@@ -17,7 +17,7 @@ public class GameWonWorld extends World
     public GameWonWorld()
     {
         super(600, 600, 1);
-        //gameWonMusic = new GreenfootSound("victory.wav");
+        gameWonMusic = new GreenfootSound("Lively Meadow (Song Loop) B 118.wav");
         //showTextWithBigBlackFont("You Win!", 180, 200);
     }
 
@@ -39,11 +39,11 @@ public class GameWonWorld extends World
     
     public void started()
     {
-        //gameWonMusic.playLoop();
+        gameWonMusic.playLoop();
     }
     
      public void stopped()
     {
-        //gameWonMusic.stop();
+        gameWonMusic.stop();
     }
 }

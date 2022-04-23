@@ -7,7 +7,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class OpenFence extends Actor
-{
+{   
+    GreenfootImage openLeft = new GreenfootImage("openFence-left.png");
+    GreenfootImage openRight = new GreenfootImage("openFence-right.png");
     /**
      * Act - do whatever the OpenFence wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

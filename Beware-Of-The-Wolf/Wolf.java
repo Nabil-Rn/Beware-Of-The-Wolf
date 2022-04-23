@@ -163,7 +163,6 @@ public class Wolf extends Actor
             return false;
         }
     }
-
     /**
      * 
      */

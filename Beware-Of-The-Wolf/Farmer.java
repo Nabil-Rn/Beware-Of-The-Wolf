@@ -42,32 +42,10 @@ public class Farmer extends Actor
         unlockFence();
         pickSheep();
         depositSheep();
-        //farmerAnimation();
         if (isGameWon()) {
             transitionToGameWorld();
         }
     }
-
-    /* public void farmerAnimation()
-    {
-    if (sheepPicked == false)
-    {
-    GifImage farmer_Up = new GifImage("farmer-up.gif");
-    GifImage farmer_Down = new GifImage("farmer-down.gif");
-    GifImage farmer_Right = new GifImage("farmer-right.gif");
-    GifImage farmer_Left = new GifImage("farmer-Left.gif");
-    }
-
-    if (sheepPicked == true)
-    {
-    farmer_Up = new GifImage("pickSheep-up.gif");
-    farmer_Down = new GifImage("pickSheep-down.gif");
-    farmer_Right =new  GifImage("pickSheep-right.gif");
-    farmer_Left = new GifImage("pickSheep-left.gif");
-
-    }
-    } */
-
     public void moveAround()
     {   int originalX = getX();
         int originalY = getY();
@@ -138,7 +116,7 @@ public class Farmer extends Actor
     }
 
     public void pickSheep()
-    {  if (isKeyCollected && isFenceUnlocked) {
+    {  if (isKeyCollected && isFenceUnlocked && !isSheepPicked) {
             Actor sheep = getOneIntersectingObject(Sheep.class);
             if (Greenfoot.isKeyDown("space") && sheep != null) {
                 World world = getWorld();
@@ -157,6 +135,7 @@ public class Farmer extends Actor
                 World world = getWorld();
                 isSheepPicked = false;
                 world.addObject(new Sheep(),300, 300); //We have to figure out how to randomly position Sheep inside of Fence
+                Greenfoot.playSound("Deposit_Sheep.wav");
                 safeSheep += 1;
             }
         }

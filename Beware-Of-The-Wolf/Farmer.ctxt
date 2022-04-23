@@ -8,7 +8,6 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ moveAround()
-comment3.text=\ public\ void\ farmerAnimation()\r\n\ \ \ \ {\r\n\ \ \ \ if\ (sheepPicked\ \=\=\ false)\r\n\ \ \ \ {\r\n\ \ \ \ GifImage\ farmer_Up\ \=\ new\ GifImage("farmer-up.gif");\r\n\ \ \ \ GifImage\ farmer_Down\ \=\ new\ GifImage("farmer-down.gif");\r\n\ \ \ \ GifImage\ farmer_Right\ \=\ new\ GifImage("farmer-right.gif");\r\n\ \ \ \ GifImage\ farmer_Left\ \=\ new\ GifImage("farmer-Left.gif");\r\n\ \ \ \ }\r\n\r\n\ \ \ \ if\ (sheepPicked\ \=\=\ true)\r\n\ \ \ \ {\r\n\ \ \ \ farmer_Up\ \=\ new\ GifImage("pickSheep-up.gif");\r\n\ \ \ \ farmer_Down\ \=\ new\ GifImage("pickSheep-down.gif");\r\n\ \ \ \ farmer_Right\ \=new\ \ GifImage("pickSheep-right.gif");\r\n\ \ \ \ farmer_Left\ \=\ new\ GifImage("pickSheep-left.gif");\r\n\r\n\ \ \ \ }\r\n}
 comment4.params=
 comment4.target=void\ collectKey()
 comment5.params=
