@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Farmer extends Actor
 {
     protected boolean isKeyCollected;
-    protected boolean isFenceUnlocked;
     protected boolean isSheepPicked;
-    
+    protected boolean isTopFenceUnlocked;
+    protected boolean isBottomFenceUnlocked;
+    protected boolean isLeftFenceUnlocked;
+    protected boolean isRightFenceUnlocked;
 
     static int nbSheep= 0;
     static int safeSheep = 0;
@@ -44,9 +46,10 @@ public class Farmer extends Actor
         pickSheep();
         depositSheep();
         if (isGameWon()) {
-            transitionToGameWorld();
+            transitionToGameWonWorld();
         }
     }
+
     public void moveAround()
     {   int originalX = getX();
         int originalY = getY();
@@ -105,42 +108,43 @@ public class Farmer extends Actor
     }
 
     public void unlockFence() 
-    {   Actor closedBottomFence = getOneIntersectingObject(ClosedBottomFence.class);
-        if (closedBottomFence != null) {
-            World world = getWorld();
-            world.removeObject(closedBottomFence);
-            world.addObject(new OpenBottomFence(),300,407);
-            Greenfoot.playSound("Unlock_Fence.wav"); 
-            isFenceUnlocked= true;
-        }
+    {   
         Actor closedTopFence = getOneIntersectingObject(closedTopFence.class);
-        if (closedTopFence != null) {
+        if (closedTopFence != null && isKeyCollected) {
             World world = getWorld();
             world.removeObject(closedTopFence);
-            world.addObject(new openTopFence(),299,190);
+            world.addObject(new openTopFence(),300,189);
             Greenfoot.playSound("Unlock_Fence.wav"); 
-            isFenceUnlocked= true;
+            isTopFenceUnlocked= true;
+        }
+        Actor closedBottomFence = getOneIntersectingObject(closedBottomFence.class);
+        if (closedBottomFence != null && isKeyCollected) {
+            World world = getWorld();
+            world.removeObject(closedBottomFence);
+            world.addObject(new openBottomFence(),300,407);
+            Greenfoot.playSound("Unlock_Fence.wav"); 
+            isBottomFenceUnlocked= true;
         }
         Actor closedLeftFence = getOneIntersectingObject(closedLeftFence.class);
-        if (closedLeftFence != null){
-           World world = getWorld();
-           world.removeObject(closedLeftFence);
-           world.addObject(new openLeftFence(), 190,300); 
-           Greenfoot.playSound("Unlock_Fence.wav");
-           isFenceUnlocked = true;
+        if (closedLeftFence != null && isKeyCollected){
+            World world = getWorld();
+            world.removeObject(closedLeftFence);
+            world.addObject(new openLeftFence(), 185,300); 
+            Greenfoot.playSound("Unlock_Fence.wav");
+            isLeftFenceUnlocked = true;
         }
         Actor closedRightFence = getOneIntersectingObject(closedRightFence.class);
-        if (closedRightFence != null){
+        if (closedRightFence != null && isKeyCollected){
             World world = getWorld();
             world.removeObject(closedRightFence);
-            world. addObject(new openRightFence(),408,300);
+            world. addObject(new openRightFence(),415,300);
             Greenfoot.playSound("Unlock_Fence.wav");
-            isFenceUnlocked = true;
+            isRightFenceUnlocked = true;
         }
     }
-    
+
     public void pickSheep()
-    {  if (isKeyCollected && isFenceUnlocked && !isSheepPicked) {
+    {  if (isKeyCollected && (isTopFenceUnlocked ||isBottomFenceUnlocked ||isLeftFenceUnlocked ||isRightFenceUnlocked)) {
             Actor sheep = getOneIntersectingObject(Sheep.class);
             if (Greenfoot.isKeyDown("space") && sheep != null) {
                 World world = getWorld();
@@ -148,13 +152,14 @@ public class Farmer extends Actor
                 Greenfoot.playSound("sheep_cry.wav");
                 isSheepPicked = true;
                 nbSheep += 1;
+                //!isSheepPicked 
             }
         }
     }
 
     public void depositSheep() {
         if (isSheepPicked){
-            Actor openBottomFence = getOneIntersectingObject(OpenBottomFence.class);
+            Actor openBottomFence = getOneIntersectingObject(openBottomFence.class);
             if (openBottomFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
@@ -200,14 +205,18 @@ public class Farmer extends Actor
         }
     }
 
-    public void transitionToGameWorld()
+    public void transitionToGameWonWorld()
     {
         World MyWorld = getWorld();
         getWorld().stopped();
         World gameWonWorld =  new GameWonWorld();
-        //gameWonWorld.started();
+        gameWonWorld.started();
         Greenfoot.setWorld(gameWonWorld);
     }
-
+    
+    public void positionSheepInsideFence() {
+        //new posX = 120
+    }
+    
 }
 

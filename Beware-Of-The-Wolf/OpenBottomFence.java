@@ -1,17 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class OpenFence here.
+ * Write a description of class openBottomFence here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OpenBottomFence extends Actor
-{   
-    GreenfootImage openLeft = new GreenfootImage("openFence-left.png");
-    GreenfootImage openRight = new GreenfootImage("openFence-right.png");
+public class openBottomFence extends Actor
+{
     /**
-     * Act - do whatever the OpenFence wants to do. This method is called whenever
+     * Act - do whatever the openBottomFence wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class FarmWorld here.
+ * Write a description of class Level3 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class FarmWorld extends World
+public class Level3 extends World
 {
     Sheep sheep = new Sheep();
     Wolf wolf = new Wolf();
@@ -14,10 +14,10 @@ public class FarmWorld extends World
 
     private GreenfootSound farmWorldMusic;
     /**
-     * Constructor for objects of class FarmWorld.
+     * Constructor for objects of class Level3.
      * 
      */
-    public FarmWorld()
+    public Level3()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
@@ -47,19 +47,10 @@ public class FarmWorld extends World
         
         Key key = new Key();
         addObject(key,88,243);
-
-        
-        closedTopFence closedTopFence = new closedTopFence();
-        addObject(closedTopFence,300,189);
         
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
         
-        closedLeftFence closedLeftFence = new closedLeftFence();
-        addObject(closedLeftFence,185,300);
-        
-        closedRightFence closedRightFence = new closedRightFence();
-        addObject(closedRightFence,415,300);
     }
 
     public void started()
