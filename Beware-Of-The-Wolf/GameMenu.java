@@ -48,6 +48,6 @@ public class GameMenu extends World
         addObject(controls_Button,170,432);
         Exit_Button exit_Button = new Exit_Button();
         addObject(exit_Button,170,499);
-    
+
     }
 }

@@ -44,11 +44,18 @@ public class FarmWorld extends World
         Sheep sheep3 = new Sheep();
         addObject(sheep3,507,195);
         addObject(los, 0, 0);
-        ClosedFence closedFence = new ClosedFence();
+        ClosedBottomFence closedFence = new ClosedBottomFence();
         addObject(closedFence,300,407);
         Key key = new Key();
         addObject(key,88,243);
 
+        closedLeftFence closedLeftFence = new closedLeftFence();
+        addObject(closedLeftFence,190,300);
+
+        closedRightFence closedRightFence = new closedRightFence();
+        addObject(closedRightFence,408,300);
+        closedTopFence closedTopFence = new closedTopFence();
+        addObject(closedTopFence,299,190);
     }
 
     public void started()

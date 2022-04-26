@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OpenFence extends Actor
+public class OpenBottomFence extends Actor
 {   
     GreenfootImage openLeft = new GreenfootImage("openFence-left.png");
     GreenfootImage openRight = new GreenfootImage("openFence-right.png");
