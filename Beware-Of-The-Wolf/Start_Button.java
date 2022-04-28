@@ -30,9 +30,9 @@ public class Start_Button extends Actor
         {   
             World currentWorld = getWorld();
             currentWorld.stopped();
-            World farmWorld =  new FarmWorld();
-            Greenfoot.setWorld(farmWorld);
-            farmWorld.started();
+            World level1 =  new Level1();
+            Greenfoot.setWorld(level1);
+            level1.started();
         }
     }
 }

@@ -57,5 +57,7 @@ public class GameWonWorld extends World
         addObject(retry_Button,300,425);
         Return_Button return_Button = new Return_Button();
         addObject(return_Button,300,504);
+        Stars stars = new Stars();
+        addObject(stars,300,250);
     }
 }

@@ -37,6 +37,8 @@ public class Level3 extends World
         addObject(farmer,101,73);
         Wolf wolf = new Wolf();
         addObject(wolf,508,377);
+        Wolf wolf1 = new Wolf();
+        addObject(wolf1, 100,500);
         Sheep sheep = new Sheep();
         addObject(sheep,243,76);
         Sheep sheep2 = new Sheep();
@@ -44,6 +46,8 @@ public class Level3 extends World
         Sheep sheep3 = new Sheep();
         addObject(sheep3,507,195);
         addObject(los, 0, 0);
+        Sheep sheep4 = new Sheep();
+        addObject(sheep4, 420,500);
         
         Key key = new Key();
         addObject(key,88,243);
@@ -51,6 +55,9 @@ public class Level3 extends World
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
         
+
+        LifeParameter lifeParameter = new LifeParameter();
+        addObject(lifeParameter,512,564);
     }
 
     public void started()

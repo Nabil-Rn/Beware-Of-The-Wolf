@@ -22,4 +22,6 @@ comment7.text=\r\n\ \r\n
 comment8.params=
 comment8.target=void\ transitionToGameOver()
 comment8.text=\r\n\ \r\n
-numComments=9
+comment9.params=
+comment9.target=int\ getNbaEatenSheep()
+numComments=10

@@ -44,22 +44,24 @@ public class Level1 extends World
         Sheep sheep3 = new Sheep();
         addObject(sheep3,507,195);
         addObject(los, 0, 0);
-        
+
         Key key = new Key();
         addObject(key,88,243);
 
-        
         closedTopFence closedTopFence = new closedTopFence();
         addObject(closedTopFence,300,189);
-        
+
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
-        
+
         closedLeftFence closedLeftFence = new closedLeftFence();
         addObject(closedLeftFence,185,300);
-        
+
         closedRightFence closedRightFence = new closedRightFence();
         addObject(closedRightFence,415,300);
+        
+        LifeParameter lifeParameter = new LifeParameter();
+        addObject(lifeParameter,512,564);
     }
 
     public void started()

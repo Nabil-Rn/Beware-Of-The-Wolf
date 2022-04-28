@@ -12,13 +12,15 @@ public class Wolf extends Actor
     GifImage wolf_Down = new GifImage("wolf-down.gif");
     GifImage wolf_Right = new GifImage("wolf-right.gif");
     GifImage wolf_Left = new GifImage("wolf-left.gif");
+    
+    static int nbaEatenSheep=0;
 
     /**
      * 
      */
     public Wolf()
     {
-
+        nbaEatenSheep = 0;
     }
 
     /**
@@ -137,6 +139,7 @@ public class Wolf extends Actor
             World world = getWorld();
             world.removeObject(sheep);
             Greenfoot.playSound("wolf-attack.wav");
+            nbaEatenSheep++;
         }
     }
 
@@ -173,5 +176,9 @@ public class Wolf extends Actor
         World gameOverWorld =  new  GameOverWorld();
         gameOverWorld.started();
         Greenfoot.setWorld(gameOverWorld);
+    }
+    
+    public static int getNbaEatenSheep() {
+        return nbaEatenSheep;
     }
 }

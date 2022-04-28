@@ -15,9 +15,9 @@ public class Farmer extends Actor
     protected boolean isLeftFenceUnlocked;
     protected boolean isRightFenceUnlocked;
 
-    static int nbSheep= 0;
-    static int safeSheep = 0;
-
+    static int nbSheep;
+    static int safeSheep;
+    static int pickedSheep;
     GreenfootImage farmer_animation;
     GifImage farmer_Up = new GifImage("farmer-up.gif");
     GifImage farmer_Down = new GifImage("farmer-down.gif");
@@ -35,6 +35,8 @@ public class Farmer extends Actor
      */
 
     public Farmer() {
+        safeSheep = 0 ;
+        pickedSheep = 0;
     }
 
     public void act()
@@ -45,9 +47,7 @@ public class Farmer extends Actor
         unlockFence();
         pickSheep();
         depositSheep();
-        if (isGameWon()) {
-            transitionToGameWonWorld();
-        }
+        //GameWon();
     }
 
     public void moveAround()
@@ -110,7 +110,7 @@ public class Farmer extends Actor
     public void unlockFence() 
     {   
         Actor closedTopFence = getOneIntersectingObject(closedTopFence.class);
-        if (closedTopFence != null && isKeyCollected) {
+        if (closedTopFence != null && isKeyCollected && !isSheepPicked) {
             World world = getWorld();
             world.removeObject(closedTopFence);
             world.addObject(new openTopFence(),300,189);
@@ -118,7 +118,7 @@ public class Farmer extends Actor
             isTopFenceUnlocked= true;
         }
         Actor closedBottomFence = getOneIntersectingObject(closedBottomFence.class);
-        if (closedBottomFence != null && isKeyCollected) {
+        if (closedBottomFence != null && isKeyCollected && !isSheepPicked) {
             World world = getWorld();
             world.removeObject(closedBottomFence);
             world.addObject(new openBottomFence(),300,407);
@@ -126,7 +126,7 @@ public class Farmer extends Actor
             isBottomFenceUnlocked= true;
         }
         Actor closedLeftFence = getOneIntersectingObject(closedLeftFence.class);
-        if (closedLeftFence != null && isKeyCollected){
+        if (closedLeftFence != null && isKeyCollected && !isSheepPicked){
             World world = getWorld();
             world.removeObject(closedLeftFence);
             world.addObject(new openLeftFence(), 185,300); 
@@ -134,7 +134,7 @@ public class Farmer extends Actor
             isLeftFenceUnlocked = true;
         }
         Actor closedRightFence = getOneIntersectingObject(closedRightFence.class);
-        if (closedRightFence != null && isKeyCollected){
+        if (closedRightFence != null && isKeyCollected && !isSheepPicked){
             World world = getWorld();
             world.removeObject(closedRightFence);
             world. addObject(new openRightFence(),415,300);
@@ -151,8 +151,8 @@ public class Farmer extends Actor
                 world.removeObject(sheep);
                 Greenfoot.playSound("sheep_cry.wav");
                 isSheepPicked = true;
-                nbSheep += 1;
-                //!isSheepPicked 
+                pickedSheep += 1;
+                
             }
         }
     }
@@ -163,45 +163,48 @@ public class Farmer extends Actor
             if (openBottomFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new Sheep(),300, 300); //We have to figure out how to randomly position Sheep inside of Fence
+                world.addObject(new SafeSheep(),300, 300); //We have to figure out how to randomly position Sheep inside of Fence
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 safeSheep += 1;
+                pickedSheep -= 1;
             }
             Actor openTopFence = getOneIntersectingObject(openTopFence.class);
             if (openTopFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new Sheep(),380, 380); //We have to figure out how to randomly position Sheep inside of Fence
+                world.addObject(new SafeSheep(),380, 380); //We have to figure out how to randomly position Sheep inside of Fence
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 safeSheep += 1;
+                pickedSheep -= 1;
             }
             Actor openLeftFence = getOneIntersectingObject(openLeftFence.class);
             if (openLeftFence != null){
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new Sheep(), 350,350);
+                world.addObject(new SafeSheep(), 350,350);
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 safeSheep += 1;
+                pickedSheep -= 1;
             }
             Actor openRightFence = getOneIntersectingObject(openRightFence.class);
             if (openRightFence != null){
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new Sheep(), 250,250);
+                world.addObject(new SafeSheep(), 250,250);
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 safeSheep += 1;
+                pickedSheep -= 1;
             }
         }
     }
-
-    public boolean isGameWon()
+    
+    public void GameWon()
     {
-        World world = getWorld();
-        if (world.getObjects(Sheep.class).isEmpty()) {
-            return true;
-        }
-        else {
-            return false;
+        if (nbSheep == 0 && safeSheep >= 1 && pickedSheep == 0){
+            transitionToGameWonWorld();
+        } else
+        if (nbSheep == 0 && safeSheep == 0 && pickedSheep == 0){
+            transitionToGameOverWorld();
         }
     }
 
@@ -214,8 +217,21 @@ public class Farmer extends Actor
         Greenfoot.setWorld(gameWonWorld);
     }
     
+    public void transitionToGameOverWorld()
+    {
+        World MyWorld = getWorld();
+        getWorld().stopped();
+        World gameOverWorld =  new GameOverWorld();
+        gameOverWorld.started();
+        Greenfoot.setWorld(gameOverWorld);
+    }
+    
     public void positionSheepInsideFence() {
         //new posX = 120
+    }
+    
+    public static int getsafeSheep() {
+        return safeSheep;
     }
     
 }
