@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Farmer here.
@@ -14,10 +15,13 @@ public class Farmer extends Actor
     protected boolean isBottomFenceUnlocked;
     protected boolean isLeftFenceUnlocked;
     protected boolean isRightFenceUnlocked;
+    protected boolean isSheepRemoved;
 
-    static int nbSheep;
-    static int safeSheep;
-    static int pickedSheep;
+    
+    int totalSheep;
+    static int remainingSheep = 1;
+    static int safeSheep = 0;
+
     GreenfootImage farmer_animation;
     GifImage farmer_Up = new GifImage("farmer-up.gif");
     GifImage farmer_Down = new GifImage("farmer-down.gif");
@@ -28,26 +32,26 @@ public class Farmer extends Actor
     GifImage pickSheep_Down = new GifImage("pickSheep-down.gif");
     GifImage pickSheep_Right = new GifImage("pickSheep-right.gif");
     GifImage pickSheep_Left = new GifImage("pickSheep-left.gif");
-
+    
+    public Farmer() {
+        remainingSheep = totalSheep; 
+        safeSheep = 0;
+    }
     /**
      * Act - do whatever the Farmer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public Farmer() {
-        safeSheep = 0 ;
-        pickedSheep = 0;
-    }
-
     public void act()
     {
-        // Add your action code here.
         moveAround();
         collectKey();
         unlockFence();
         pickSheep();
         depositSheep();
-        //GameWon();
+        if (isGameWon()) {
+            transitionToGameWon();
+        }
     }
 
     public void moveAround()
@@ -151,8 +155,8 @@ public class Farmer extends Actor
                 world.removeObject(sheep);
                 Greenfoot.playSound("sheep_cry.wav");
                 isSheepPicked = true;
-                pickedSheep += 1;
-                
+                isSheepRemoved = true;
+                remainingSheep++; //necessary since Sheep object is removed;
             }
         }
     }
@@ -163,19 +167,17 @@ public class Farmer extends Actor
             if (openBottomFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(),300, 300); //We have to figure out how to randomly position Sheep inside of Fence
+                world.addObject(new SafeSheep(),300, 300);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                safeSheep += 1;
-                pickedSheep -= 1;
+                remainingSheep--;
             }
             Actor openTopFence = getOneIntersectingObject(openTopFence.class);
             if (openTopFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(),380, 380); //We have to figure out how to randomly position Sheep inside of Fence
+                world.addObject(new SafeSheep(),380, 380); 
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                safeSheep += 1;
-                pickedSheep -= 1;
+                remainingSheep--;
             }
             Actor openLeftFence = getOneIntersectingObject(openLeftFence.class);
             if (openLeftFence != null){
@@ -183,8 +185,7 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 350,350);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                safeSheep += 1;
-                pickedSheep -= 1;
+                remainingSheep--;
             }
             Actor openRightFence = getOneIntersectingObject(openRightFence.class);
             if (openRightFence != null){
@@ -192,47 +193,41 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 250,250);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                safeSheep += 1;
-                pickedSheep -= 1;
+                remainingSheep--;
             }
         }
     }
-    
-    public void GameWon()
-    {
-        if (nbSheep == 0 && safeSheep >= 1 && pickedSheep == 0){
-            transitionToGameWonWorld();
-        } else
-        if (nbSheep == 0 && safeSheep == 0 && pickedSheep == 0){
-            transitionToGameOverWorld();
+
+    public boolean isGameWon() {
+        World world = getWorld();
+        remainingSheep =world.getObjects(Sheep.class).size();
+        safeSheep = world.getObjects(SafeSheep.class).size();
+        totalSheep = remainingSheep + safeSheep;
+        if ( remainingSheep == 0 && safeSheep == totalSheep && !isSheepRemoved) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
-    public void transitionToGameWonWorld()
+    public void transitionToGameWon()
     {
-        World MyWorld = getWorld();
-        getWorld().stopped();
+        World currentLevel = getWorld();
+        currentLevel.stopped();
         World gameWonWorld =  new GameWonWorld();
         gameWonWorld.started();
         Greenfoot.setWorld(gameWonWorld);
     }
-    
-    public void transitionToGameOverWorld()
-    {
-        World MyWorld = getWorld();
-        getWorld().stopped();
-        World gameOverWorld =  new GameOverWorld();
-        gameOverWorld.started();
-        Greenfoot.setWorld(gameOverWorld);
-    }
-    
+
     public void positionSheepInsideFence() {
         //new posX = 120
     }
-    
-    public static int getsafeSheep() {
+
+    public static int getSafeSheep() {
         return safeSheep;
     }
-    
+  
 }
+
 

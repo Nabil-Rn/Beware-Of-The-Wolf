@@ -28,13 +28,13 @@ public class Stars extends Actor
      */
     public void act()
     {
-        starsRating();
+        //starsRating();
 
     }
 
     public void starsRating() {
 
-        int count = Farmer.getsafeSheep();
+        int count = Farmer.getSafeSheep();
         if (count==1) {
             setImage (star1);
         }

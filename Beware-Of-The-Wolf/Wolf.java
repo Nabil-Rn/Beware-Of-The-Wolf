@@ -12,7 +12,7 @@ public class Wolf extends Actor
     GifImage wolf_Down = new GifImage("wolf-down.gif");
     GifImage wolf_Right = new GifImage("wolf-right.gif");
     GifImage wolf_Left = new GifImage("wolf-left.gif");
-    
+
     static int nbaEatenSheep=0;
 
     /**
@@ -49,7 +49,7 @@ public class Wolf extends Actor
         {
             randNb = Greenfoot.getRandomNumber(13);
             // repeatNb
-            
+
             if (randNb == 0) 
             {
                 repeatNb = Greenfoot.getRandomNumber(60);
@@ -159,25 +159,26 @@ public class Wolf extends Actor
     public boolean isGameLost()
     {
         World world = getWorld();
-        if (world.getObjects(Sheep.class).isEmpty() || world.getObjects(Farmer.class).isEmpty()) {
+        if ( nbaEatenSheep == 3 || world.getObjects(Farmer.class).isEmpty()) {
             return true;
         }
         else {
             return false;
         }
     }
+
     /**
      * 
      */
     public void transitionToGameOver()
     {
-        World crabWorld = getWorld();
-        getWorld().stopped();
-        World gameOverWorld =  new  GameOverWorld();
+        World currentLevel = getWorld();
+        currentLevel.stopped();
+        World gameOverWorld =  new GameOverWorld();
         gameOverWorld.started();
         Greenfoot.setWorld(gameOverWorld);
     }
-    
+
     public static int getNbaEatenSheep() {
         return nbaEatenSheep;
     }
