@@ -16,13 +16,14 @@ public class Farmer extends Actor
     protected boolean isLeftFenceUnlocked;
     protected boolean isRightFenceUnlocked;
     
+    private Level1 level1;
+    private Level2 level2;
 
     private Wolf wolf;
     private Sheep sheep;
     private SafeSheep savedSheep;
     
-    //List sheep = getWorld().getObjects(Sheep.class).size();  
-    //https://www.greenfoot.org/topics/7430
+
     
     static int nbSheep;
     static int nbSafeSheep;
@@ -155,7 +156,6 @@ public class Farmer extends Actor
     public void pickSheep()
     {  if (isKeyCollected && (isTopFenceUnlocked ||isBottomFenceUnlocked ||isLeftFenceUnlocked ||isRightFenceUnlocked)) {
             Actor sheep = getOneIntersectingObject(Sheep.class);
-            //remainingSheep++; //necessary since Sheep object is removed;
             if (Greenfoot.isKeyDown("space") && sheep != null) {
                 World world = getWorld();
                 world.removeObject(sheep);
@@ -174,7 +174,6 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(),300, 300);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                //remainingSheep--;
             }
             Actor openTopFence = getOneIntersectingObject(openTopFence.class);
             if (openTopFence != null) {
@@ -182,7 +181,6 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(),380, 380); 
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                //remainingSheep--;
             }
             Actor openLeftFence = getOneIntersectingObject(openLeftFence.class);
             if (openLeftFence != null){
@@ -190,7 +188,6 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 350,350);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                //remainingSheep--;
             }
             Actor openRightFence = getOneIntersectingObject(openRightFence.class);
             if (openRightFence != null){
@@ -198,7 +195,6 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 250,250);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                //remainingSheep--;
             }
         }
     }
@@ -222,11 +218,6 @@ public class Farmer extends Actor
         gameWonWorld.started();
         Greenfoot.setWorld(gameWonWorld);
     }
-
-    public void positionSheepInsideFence() {
-        //new posX = 120
-    }
-
 }
 
 

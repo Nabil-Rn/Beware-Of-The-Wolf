@@ -10,7 +10,12 @@ public class GameWonWorld extends World
 {
 
     private GreenfootSound gameWonMusic;
+    Level1 level1;
+    Level2 level2;
+    
     Score score;
+    
+    
     double timeEndScreenCreation = System.currentTimeMillis();
 
     /**
@@ -24,11 +29,11 @@ public class GameWonWorld extends World
         prepare();
         
         Score result = new Score();
-        addObject(result, 300, 280);
+        addObject(result, 300, 300);
         result.setImage(new GreenfootImage("You finished with a score of " + result.getScore() + ".",40, Color.WHITE, Color.GREEN));;
 
         Score feedback = new Score();
-        addObject(feedback,300,325);
+        addObject(feedback,300,345);
         String ranking = new String();
         if (result.getScore() >= 300 )
             ranking = " Professional player";
@@ -36,7 +41,7 @@ public class GameWonWorld extends World
             ranking = " Intermediate player";
         else
             ranking = " Novice player";
-        feedback.setImage(new GreenfootImage("You are a" + ranking + ".", 40, Color.WHITE, Color.GREEN));;
+        feedback.setImage(new GreenfootImage("You are a" + ranking + "!", 40, Color.WHITE, Color.GREEN));;
     }
 
     /**
@@ -71,14 +76,12 @@ public class GameWonWorld extends World
      */
     private void prepare()
     {   
-        NextLevel_Button nextLevel_Button = new NextLevel_Button();
-        addObject(nextLevel_Button,300,390);
         
         Retry_Button retry_Button = new Retry_Button();
-        addObject(retry_Button,300,460);
+        addObject(retry_Button,300,420);
         
         Return_Button return_Button = new Return_Button();
-        addObject(return_Button,300,530);
+        addObject(return_Button,300,490);
         
         Stars stars = new Stars();
         addObject(stars,300,180);

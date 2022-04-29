@@ -24,11 +24,13 @@ public class Level3 extends World
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
         prepare();
     }
+
     public void act() {
         // Update time step duration
         timeStepDuration = (System.currentTimeMillis() - lastFrameTimeMS) / 1000.0;
         lastFrameTimeMS = System.currentTimeMillis();
     }
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -37,12 +39,12 @@ public class Level3 extends World
     {
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
-        
+
         Wolf wolf = new Wolf();
         addObject(wolf,508,377);
         Wolf wolf1 = new Wolf();
         addObject(wolf1, 100,500);
-        
+
         Sheep sheep = new Sheep();
         addObject(sheep,243,76);
         Sheep sheep2 = new Sheep();
@@ -51,13 +53,13 @@ public class Level3 extends World
         addObject(sheep3,507,195);
         Sheep sheep4 = new Sheep();
         addObject(sheep4, 420,500);
-        
+
         Key key = new Key();
         addObject(key,88,243);
-        
+
         Fence fence = new Fence();
         addObject(fence,300,300);
-        
+
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
 

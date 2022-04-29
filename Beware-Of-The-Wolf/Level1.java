@@ -13,6 +13,8 @@ public class Level1 extends World
     private long lastFrameTimeMS;
     private double timeStepDuration;
 
+    protected boolean isLevel1Completed;
+
     private GreenfootSound farmWorldMusic;
     /**
      * Constructor for objects of class Level1.
@@ -23,6 +25,7 @@ public class Level1 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
+        getLevelNumber();
         prepare();
     }
 
@@ -31,6 +34,7 @@ public class Level1 extends World
         timeStepDuration = (System.currentTimeMillis() - lastFrameTimeMS) / 1000.0;
         lastFrameTimeMS = System.currentTimeMillis();
     }
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -39,10 +43,10 @@ public class Level1 extends World
     {
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
-        
+
         Wolf wolf = new Wolf();
         addObject(wolf,508,377);
-        
+
         Sheep sheep = new Sheep();
         addObject(sheep,243,76);
         Sheep sheep2 = new Sheep();
@@ -52,10 +56,10 @@ public class Level1 extends World
 
         Key key = new Key();
         addObject(key,88,243);
-        
+
         Fence fence = new Fence();
         addObject(fence,300,300);
-        
+
         closedTopFence closedTopFence = new closedTopFence();
         addObject(closedTopFence,300,189);
 
@@ -67,16 +71,16 @@ public class Level1 extends World
 
         closedRightFence closedRightFence = new closedRightFence();
         addObject(closedRightFence,415,300);
-        
+
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
     }
-    
+
     public double getTimeStepDuration()
     {
         return timeStepDuration;
     }
-    
+
     public void started()
     {
         farmWorldMusic.playLoop();
@@ -85,6 +89,10 @@ public class Level1 extends World
     public void stopped()
     {
         farmWorldMusic.stop();
+    }
+    
+    public int getLevelNumber() {
+    return 1;
     }
 
 }

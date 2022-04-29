@@ -11,7 +11,9 @@ public class Level2 extends World
     // To dynamically calculate the time step duration
     private long lastFrameTimeMS;
     private double timeStepDuration;
-    
+
+    protected boolean isLevel2Completed;
+
     private GreenfootSound farmWorldMusic;
     /**
      * Constructor for objects of class Level2.
@@ -21,10 +23,12 @@ public class Level2 extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
-        farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
+        farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav"); 
+        getLevelNumber();
         prepare();
     }
-      public void act() {
+
+    public void act() {
         // Update time step duration
         timeStepDuration = (System.currentTimeMillis() - lastFrameTimeMS) / 1000.0;
         lastFrameTimeMS = System.currentTimeMillis();
@@ -38,10 +42,10 @@ public class Level2 extends World
     {
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
-        
+
         Wolf wolf = new Wolf();
         addObject(wolf,508,377);
-        
+
         Sheep sheep = new Sheep();
         addObject(sheep,243,76);
         Sheep sheep2 = new Sheep();
@@ -50,19 +54,19 @@ public class Level2 extends World
         addObject(sheep3,507,195);
         Sheep sheep4 = new Sheep();
         addObject(sheep4, 420,500);
-        
+
         Key key = new Key();
         addObject(key,88,243);
 
         Fence fence = new Fence();
         addObject(fence,300,300);
-        
+
         closedTopFence closedTopFence = new closedTopFence();
         addObject(closedTopFence,300,189);
-        
+
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
-        
+
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
     }
@@ -76,5 +80,8 @@ public class Level2 extends World
     {
         farmWorldMusic.stop();
     }
-
+    
+    public int getLevelNumber() {
+    return 2;
+    }
 }
