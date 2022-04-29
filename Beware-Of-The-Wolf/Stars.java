@@ -12,7 +12,8 @@ public class Stars extends Actor
     private GreenfootImage star2;
     private GreenfootImage star3;
 
-    private Wolf wolf;
+    Wolf wolf;
+    SafeSheep savedSheep;
 
     public Stars() {
         star1 = new GreenfootImage ("1-star.png");
@@ -33,8 +34,7 @@ public class Stars extends Actor
     }
 
     public void starsRating() {
-
-        int count = Farmer.getSafeSheep();
+        int count = savedSheep.getSafeSheepSize();
         if (count==1) {
             setImage (star1);
         }

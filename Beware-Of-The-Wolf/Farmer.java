@@ -15,12 +15,17 @@ public class Farmer extends Actor
     protected boolean isBottomFenceUnlocked;
     protected boolean isLeftFenceUnlocked;
     protected boolean isRightFenceUnlocked;
-    protected boolean isSheepRemoved;
-
     
-    int totalSheep;
-    static int remainingSheep = 1;
-    static int safeSheep = 0;
+
+    private Wolf wolf;
+    private Sheep sheep;
+    private SafeSheep savedSheep;
+    
+    //List sheep = getWorld().getObjects(Sheep.class).size();  
+    //https://www.greenfoot.org/topics/7430
+    
+    static int nbSheep;
+    static int nbSafeSheep;
 
     GreenfootImage farmer_animation;
     GifImage farmer_Up = new GifImage("farmer-up.gif");
@@ -34,8 +39,7 @@ public class Farmer extends Actor
     GifImage pickSheep_Left = new GifImage("pickSheep-left.gif");
     
     public Farmer() {
-        remainingSheep = totalSheep; 
-        safeSheep = 0;
+        
     }
     /**
      * Act - do whatever the Farmer wants to do. This method is called whenever
@@ -49,6 +53,7 @@ public class Farmer extends Actor
         unlockFence();
         pickSheep();
         depositSheep();
+
         if (isGameWon()) {
             transitionToGameWon();
         }
@@ -150,13 +155,13 @@ public class Farmer extends Actor
     public void pickSheep()
     {  if (isKeyCollected && (isTopFenceUnlocked ||isBottomFenceUnlocked ||isLeftFenceUnlocked ||isRightFenceUnlocked)) {
             Actor sheep = getOneIntersectingObject(Sheep.class);
+            //remainingSheep++; //necessary since Sheep object is removed;
             if (Greenfoot.isKeyDown("space") && sheep != null) {
                 World world = getWorld();
                 world.removeObject(sheep);
                 Greenfoot.playSound("sheep_cry.wav");
                 isSheepPicked = true;
-                isSheepRemoved = true;
-                remainingSheep++; //necessary since Sheep object is removed;
+                 
             }
         }
     }
@@ -169,7 +174,7 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(),300, 300);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                remainingSheep--;
+                //remainingSheep--;
             }
             Actor openTopFence = getOneIntersectingObject(openTopFence.class);
             if (openTopFence != null) {
@@ -177,7 +182,7 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(),380, 380); 
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                remainingSheep--;
+                //remainingSheep--;
             }
             Actor openLeftFence = getOneIntersectingObject(openLeftFence.class);
             if (openLeftFence != null){
@@ -185,7 +190,7 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 350,350);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                remainingSheep--;
+                //remainingSheep--;
             }
             Actor openRightFence = getOneIntersectingObject(openRightFence.class);
             if (openRightFence != null){
@@ -193,17 +198,15 @@ public class Farmer extends Actor
                 isSheepPicked = false;
                 world.addObject(new SafeSheep(), 250,250);
                 Greenfoot.playSound("Deposit_Sheep.wav");
-                remainingSheep--;
+                //remainingSheep--;
             }
         }
     }
 
     public boolean isGameWon() {
-        World world = getWorld();
-        remainingSheep =world.getObjects(Sheep.class).size();
-        safeSheep = world.getObjects(SafeSheep.class).size();
-        totalSheep = remainingSheep + safeSheep;
-        if ( remainingSheep == 0 && safeSheep == totalSheep && !isSheepRemoved) {
+        nbSafeSheep = getWorld().getObjects(SafeSheep.class).size();
+        nbSheep = getWorld().getObjects(Sheep.class).size();
+        if ( nbSheep == 0 && nbSafeSheep > 0 && !isSheepPicked) {
             return true;
         }
         else {
@@ -224,10 +227,6 @@ public class Farmer extends Actor
         //new posX = 120
     }
 
-    public static int getSafeSheep() {
-        return safeSheep;
-    }
-  
 }
 
 

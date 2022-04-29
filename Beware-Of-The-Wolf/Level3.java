@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends World
 {
-    Sheep sheep = new Sheep();
-    Wolf wolf = new Wolf();
-    LineOfSight los = new LineOfSight(wolf, sheep);
+    // To dynamically calculate the time step duration
+    private long lastFrameTimeMS;
+    private double timeStepDuration;
 
     private GreenfootSound farmWorldMusic;
     /**
@@ -24,37 +24,42 @@ public class Level3 extends World
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
         prepare();
     }
-
+    public void act() {
+        // Update time step duration
+        timeStepDuration = (System.currentTimeMillis() - lastFrameTimeMS) / 1000.0;
+        lastFrameTimeMS = System.currentTimeMillis();
+    }
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        Fence fence = new Fence();
-        addObject(fence,300,300);
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
+        
         Wolf wolf = new Wolf();
         addObject(wolf,508,377);
         Wolf wolf1 = new Wolf();
         addObject(wolf1, 100,500);
+        
         Sheep sheep = new Sheep();
         addObject(sheep,243,76);
         Sheep sheep2 = new Sheep();
         addObject(sheep2,59,338);
         Sheep sheep3 = new Sheep();
         addObject(sheep3,507,195);
-        addObject(los, 0, 0);
         Sheep sheep4 = new Sheep();
         addObject(sheep4, 420,500);
         
         Key key = new Key();
         addObject(key,88,243);
         
+        Fence fence = new Fence();
+        addObject(fence,300,300);
+        
         closedBottomFence closedFence = new closedBottomFence();
         addObject(closedFence,300,407);
-        
 
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
@@ -68,13 +73,5 @@ public class Level3 extends World
     public void stopped()
     {
         farmWorldMusic.stop();
-    }
-
-    public LineOfSight getLOS () {
-        return los;
-    }
-
-    public Sheep getSheep() {
-        return sheep;
     }
 }

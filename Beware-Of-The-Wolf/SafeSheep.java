@@ -13,6 +13,8 @@ public class SafeSheep extends Actor
     GifImage sheep_Down = new GifImage("sheep-down.gif");
     GifImage sheep_Right = new GifImage("sheep-right.gif");
     GifImage sheep_Left = new GifImage("sheep-left.gif");
+    
+    static int safeSheepCounter = 0;
 
     /**
      * Act - do whatever the SafeSheep wants to do. This method is called whenever
@@ -22,7 +24,11 @@ public class SafeSheep extends Actor
     {
         moveAround();
     }
-
+    
+      public int getSafeSheepSize() {
+     return safeSheepCounter = getWorld().getObjects(Sheep.class).size();
+    }
+    
     /**
      * 
      */

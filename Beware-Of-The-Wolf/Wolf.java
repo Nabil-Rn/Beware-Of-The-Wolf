@@ -13,7 +13,7 @@ public class Wolf extends Actor
     GifImage wolf_Right = new GifImage("wolf-right.gif");
     GifImage wolf_Left = new GifImage("wolf-left.gif");
 
-    static int nbaEatenSheep=0;
+    static int nbaEatenSheep = 0;
 
     /**
      * 
@@ -159,7 +159,7 @@ public class Wolf extends Actor
     public boolean isGameLost()
     {
         World world = getWorld();
-        if ( nbaEatenSheep == 3 || world.getObjects(Farmer.class).isEmpty()) {
+        if ( nbaEatenSheep ==3  || world.getObjects(Farmer.class).isEmpty()) {
             return true;
         }
         else {
