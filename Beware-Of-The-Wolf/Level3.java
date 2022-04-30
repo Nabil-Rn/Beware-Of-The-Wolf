@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Level3 extends World
 {
     private GreenfootSound farmWorldMusic;
+    
+    Farmer farmer = (Farmer) new Farmer();
     /**
      * Constructor for objects of class Level3.
      * 
@@ -17,6 +19,7 @@ public class Level3 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
+        farmer.setCurrentLevel(3);
         prepare();
         
     }

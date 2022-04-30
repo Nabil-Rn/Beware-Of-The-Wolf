@@ -11,6 +11,8 @@ public class Level1 extends World
 {
     private GreenfootSound farmWorldMusic;
 
+    Farmer farmer = (Farmer) new Farmer();
+
     /**
      * Constructor for objects of class Level1.
      * 
@@ -19,6 +21,7 @@ public class Level1 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
+        farmer.setCurrentLevel(1);
         prepare();
 
     }
@@ -61,16 +64,17 @@ public class Level1 extends World
 
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
-        
+
     }
 
     public void started() {
         farmWorldMusic.playLoop();
-        
+
     }
 
     public void stopped() {
         farmWorldMusic.stop();
-        
+
     }
+
 }

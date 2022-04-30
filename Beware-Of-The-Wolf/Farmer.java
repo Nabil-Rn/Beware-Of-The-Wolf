@@ -22,6 +22,7 @@ public class Farmer extends Actor
 
     static int nbSheep;
     static int nbSafeSheep;
+    static int currentLevel;
 
     GreenfootImage farmer_animation;
     GifImage farmer_Up = new GifImage("farmer-up.gif");
@@ -176,13 +177,18 @@ public class Farmer extends Actor
     }
 
     public void depositSheep() {
+        
+        //Position parameters X and Y for SafeSheep inside fence
+        int posX = 220 + Greenfoot.getRandomNumber(160);
+        int posY = 220 + Greenfoot.getRandomNumber(160);
+        
         if (isSheepPicked){
             
             Actor openBottomFence = getOneIntersectingObject(openBottomFence.class);
             if (openBottomFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(),300, 300);
+                world.addObject(new SafeSheep(),posX, posY);
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 
             }
@@ -191,7 +197,7 @@ public class Farmer extends Actor
             if (openTopFence != null) {
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(),380, 380); 
+                world.addObject(new SafeSheep(),posX, posY); 
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 
             }
@@ -200,7 +206,7 @@ public class Farmer extends Actor
             if (openLeftFence != null){
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(), 350,350);
+                world.addObject(new SafeSheep(), posX, posY);
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 
             }
@@ -209,7 +215,7 @@ public class Farmer extends Actor
             if (openRightFence != null){
                 World world = getWorld();
                 isSheepPicked = false;
-                world.addObject(new SafeSheep(), 250,250);
+                world.addObject(new SafeSheep(), posX , posY);
                 Greenfoot.playSound("Deposit_Sheep.wav");
                 
             }
@@ -242,6 +248,14 @@ public class Farmer extends Actor
 
     public int getGainedPoints() { //reward +50 pts for every sheep you save 
         return nbSafeSheep*(+50);
+    }
+    
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+    
+     public void setCurrentLevel(int newCurrentLevel) {
+        currentLevel = newCurrentLevel; 
     }
 }
 

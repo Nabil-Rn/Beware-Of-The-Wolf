@@ -16,8 +16,11 @@ public class ControlScreen extends World
         // Create a new world with 600x600 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         displayText();
-        pressSpace();
 
+    }
+    
+    public void act() {
+        pressSpace();
     }
 
     public void pressSpace() {

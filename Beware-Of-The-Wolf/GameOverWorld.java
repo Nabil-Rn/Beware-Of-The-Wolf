@@ -10,6 +10,8 @@ public class GameOverWorld extends World
 {
     private GreenfootSound gameOverMusic;
     
+    Farmer farmer = (Farmer) new Farmer();
+    
     /**
      * Constructor for objects of class GameOverWorld.
      */
@@ -35,6 +37,7 @@ public class GameOverWorld extends World
      * That is: create the initial objects and add them to the world.
      */
     private void prepare() {
+        
         Retry_Button retry_Button = new Retry_Button();
         addObject(retry_Button,300,425);
         
