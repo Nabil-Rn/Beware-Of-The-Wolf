@@ -13,8 +13,6 @@ public class Level1 extends World
     private long lastFrameTimeMS;
     private double timeStepDuration;
 
-    protected boolean isLevel1Completed;
-
     private GreenfootSound farmWorldMusic;
     /**
      * Constructor for objects of class Level1.
@@ -25,7 +23,6 @@ public class Level1 extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
-        getLevelNumber();
         prepare();
     }
 
@@ -90,9 +87,4 @@ public class Level1 extends World
     {
         farmWorldMusic.stop();
     }
-    
-    public int getLevelNumber() {
-    return 1;
-    }
-
 }

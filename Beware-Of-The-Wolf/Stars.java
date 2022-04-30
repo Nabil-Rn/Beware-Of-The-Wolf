@@ -11,16 +11,14 @@ public class Stars extends Actor
     private GreenfootImage star1;
     private GreenfootImage star2;
     private GreenfootImage star3;
-
-    Wolf wolf;
-    SafeSheep savedSheep;
+    
+    GameWonWorld gameWon; 
 
     public Stars() {
         star1 = new GreenfootImage ("1-star.png");
         star2 = new GreenfootImage ("2-stars.png");
         star3 = new GreenfootImage ("3-stars.png");
-
-        setImage(star3);
+        //setImage(star3);
     }
 
     /**
@@ -29,19 +27,18 @@ public class Stars extends Actor
      */
     public void act()
     {
-        //starsRating();
-
+        starsRating();
     }
 
     public void starsRating() {
-        int count = savedSheep.getSafeSheepSize();
-        if (count==1) {
+        int pts = gameWon.getAccumulatedPoints();
+        if ( pts < 200) {
             setImage (star1);
         }
-        else if (count ==2) {
+        else if ( pts >= 200 && pts <= 300) {
             setImage(star2);
         }
-        else if (count ==3) {
+        else if (pts > 300) {
             setImage(star3);
         }
     }

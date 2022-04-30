@@ -12,8 +12,8 @@ public class LifeParameter extends Actor
     private GreenfootImage heart2;
     private GreenfootImage heart3;
     
-    private Wolf wolf;
-    private Farmer farmer;
+    Wolf wolf = (Wolf) new Wolf();
+    Farmer farmer = (Farmer) new Farmer();
     
     
     public LifeParameter() {
@@ -32,16 +32,12 @@ public class LifeParameter extends Actor
     }
     public void animateLifeParameter() {
         
-        int count = wolf.getNbaEatenSheep();
-        
-        if (getImage() == heart3 && count==1) {
+        int count = wolf.getNbEatenSheep();
+        if (getImage() == heart3 && count == 1) {
             setImage (heart2);
         }
-        else if (getImage() == heart2 && count ==2) {
+        else if (getImage() == heart2 && count == 2) {
             setImage(heart1);
-        }
-        else if (count == 3) {
-            //wol.transitionToGameOver();
         }
     }
 }

@@ -35,8 +35,7 @@ public class Sheep extends Actor
         //move(4);
         if (Greenfoot.getRandomNumber(100) < 5)
         {
-            randNb = Greenfoot.getRandomNumber(13);
-            // repeatNb
+            randNb = Greenfoot.getRandomNumber(13); // repeatNb
 
             if (randNb == 0) 
             {
@@ -46,8 +45,6 @@ public class Sheep extends Actor
                     //sheep_animation = sheep_Right.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 10)
                     {
-                        //turn(0);
-                        //setRotation(0);
                         setLocation(getX() - 5, getY());
                         sheep_animation = sheep_Right.getCurrentImage();
                         setImage(sheep_animation);
@@ -62,8 +59,6 @@ public class Sheep extends Actor
                     //sheep_animation = sheep_Left.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 10)
                     {
-                        //turn(180);
-                        //setRotation(180);
                         setLocation(getX() + 5, getY());
                         sheep_animation = sheep_Left.getCurrentImage();
                         setImage(sheep_animation);
@@ -78,8 +73,6 @@ public class Sheep extends Actor
                     //sheep_animation = sheep_Down.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 10)
                     {
-                        //turn(270);
-                        //setRotation(270);
                         setLocation(getX(), getY() + 5);
                         sheep_animation = sheep_Down.getCurrentImage();
                         setImage(sheep_animation);
@@ -95,8 +88,6 @@ public class Sheep extends Actor
                     //sheep_animation = sheep_Up.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 10)
                     {
-                        //turn(90);
-                        //setRotation(90);
                         setLocation(getX(), getY() - 5);
                         sheep_animation = sheep_Up.getCurrentImage();
                         setImage(sheep_animation);

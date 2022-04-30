@@ -13,6 +13,4 @@ comment4.params=
 comment4.target=void\ started()
 comment5.params=
 comment5.target=void\ stopped()
-comment6.params=
-comment6.target=int\ getLevelNumber()
-numComments=7
+numComments=6

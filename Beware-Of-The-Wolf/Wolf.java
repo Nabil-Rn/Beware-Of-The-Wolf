@@ -13,14 +13,16 @@ public class Wolf extends Actor
     GifImage wolf_Right = new GifImage("wolf-right.gif");
     GifImage wolf_Left = new GifImage("wolf-left.gif");
 
-    static int nbaEatenSheep = 0;
+    static int nbEatenSheep;
+    static int losingPoints;
 
     /**
      * 
      */
     public Wolf()
     {
-        nbaEatenSheep = 0;
+        nbEatenSheep = 0;
+        losingPoints = 0;
     }
 
     /**
@@ -44,11 +46,10 @@ public class Wolf extends Actor
         int originalX = getX();
         int originalY = getY();
         int randNb, repeatNb;
-        //move(4);
+
         if (Greenfoot.getRandomNumber(100) < 5)
         {
-            randNb = Greenfoot.getRandomNumber(13);
-            // repeatNb
+            randNb = Greenfoot.getRandomNumber(13); // repeatNb
 
             if (randNb == 0) 
             {
@@ -58,8 +59,6 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Right.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 7)
                     {
-                        //turn(0);
-                        //setRotation(0);
                         setLocation(getX() - 10, getY());
                         wolf_animation = wolf_Right.getCurrentImage();
                         setImage(wolf_animation);
@@ -70,12 +69,10 @@ public class Wolf extends Actor
             {
                 repeatNb = Greenfoot.getRandomNumber(60);
                 for( int i =0; i <= 4 + repeatNb; i++)
-                {
+                {   
                     //wolf_animation = wolf_Left.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 7)
                     {
-                        //turn(180);
-                        //setRotation(180);
                         setLocation(getX() + 10, getY());
                         wolf_animation = wolf_Left.getCurrentImage();
                         setImage(wolf_animation);
@@ -107,8 +104,6 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Up.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 20)
                     {
-                        //turn(90);
-                        //setRotation(90);
                         setLocation(getX(), getY() - 20);
                         wolf_animation = wolf_Up.getCurrentImage();
                         setImage(wolf_animation);
@@ -128,7 +123,6 @@ public class Wolf extends Actor
         if (farmer != null) {
             World world = getWorld();
             world.removeObject(farmer);
-            //Greenfoot.playSound("");
         }
     }
 
@@ -139,7 +133,8 @@ public class Wolf extends Actor
             World world = getWorld();
             world.removeObject(sheep);
             Greenfoot.playSound("wolf-attack.wav");
-            nbaEatenSheep++;
+            nbEatenSheep++;
+            losingPoints -= 50;           
         }
     }
 
@@ -158,8 +153,8 @@ public class Wolf extends Actor
      */
     public boolean isGameLost()
     {
-        World world = getWorld();
-        if ( nbaEatenSheep ==3  || world.getObjects(Farmer.class).isEmpty()) {
+        if ( nbEatenSheep ==3  || getWorld().getObjects(Farmer.class).isEmpty()) {
+            //If Wolf ate 3 Sheep (LifeParameter = 0), it's game over OR if Wolf ate Farmer, it's instant game over
             return true;
         }
         else {
@@ -179,7 +174,11 @@ public class Wolf extends Actor
         Greenfoot.setWorld(gameOverWorld);
     }
 
-    public static int getNbaEatenSheep() {
-        return nbaEatenSheep;
+    public static int getNbEatenSheep() { //count how many sheep the Wolf ate
+    return nbEatenSheep;
+    }
+
+    public static int getLostPoints(){ // punish -50pts for every sheep Wolf ate
+    return getNbEatenSheep()*losingPoints;
     }
 }

@@ -10,13 +10,11 @@ public class GameWonWorld extends World
 {
 
     private GreenfootSound gameWonMusic;
-    Level1 level1;
-    Level2 level2;
+
+    Farmer farmer = (Farmer) new Farmer();
+    Wolf wolf = (Wolf) new Wolf();
     
-    Score score;
-    
-    
-    double timeEndScreenCreation = System.currentTimeMillis();
+    static int accumulatedPoints;
 
     /**
      * Constructor for objects of class GameWonWorld.
@@ -25,23 +23,26 @@ public class GameWonWorld extends World
     {
         super(600, 600, 1);
         gameWonMusic = new GreenfootSound("Lively Meadow (Song Loop) B 118.wav");
-        showTextWithBigBlackFont("Level Completed", 100, 100);
+        displayText();
         prepare();
-        
-        Score result = new Score();
-        addObject(result, 300, 300);
-        result.setImage(new GreenfootImage("You finished with a score of " + result.getScore() + ".",40, Color.WHITE, Color.GREEN));;
-
-        Score feedback = new Score();
-        addObject(feedback,300,345);
+    }
+    
+    public void displayText() {
+        showTextWithBigBlackFont("Level Completed", 120, 100);
+        /* 
+        Calculate the accumulated points
+        200 + (+50)*nbSafeSheep + (-50)*nbEatenSheep
+        */
+        accumulatedPoints = 200 + farmer.getGainedPoints() + wolf.getLostPoints();
+        showText("You finished with a score of " + accumulatedPoints, 90, 300);
         String ranking = new String();
-        if (result.getScore() >= 300 )
+        if (accumulatedPoints > 300 )
             ranking = " Professional player";
-        else if (result.getScore() >= 200)
-            ranking = " Intermediate player";
-        else
+        else if (accumulatedPoints >= 200 && accumulatedPoints <= 300)
+            ranking = " Mediocre player";
+        else if (accumulatedPoints < 200) 
             ranking = " Novice player";
-        feedback.setImage(new GreenfootImage("You are a" + ranking + "!", 40, Color.WHITE, Color.GREEN));;
+        showText("You are a" + ranking + "!", 100, 360);
     }
 
     /**
@@ -56,8 +57,13 @@ public class GameWonWorld extends World
         bg.drawString(message, x, y);
     }
 
-    public void stars(){
-
+    public void showText(String message, int x, int y)
+    {
+        GreenfootImage bg = getBackground();
+        Font font =  new Font(30);
+        bg.setFont(font);
+        bg.setColor(Color.BLACK);
+        bg.drawString(message, x, y);
     }
 
     public void started()
@@ -69,23 +75,26 @@ public class GameWonWorld extends World
     {
         gameWonMusic.stop();
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {   
-        
+
         Retry_Button retry_Button = new Retry_Button();
-        addObject(retry_Button,300,420);
-        
+        addObject(retry_Button,300,425);
+
         Return_Button return_Button = new Return_Button();
-        addObject(return_Button,300,490);
-        
+        addObject(return_Button,300,504);
+
         Stars stars = new Stars();
         addObject(stars,300,180);
 
-        
+    }
+
+    public int getAccumulatedPoints() {
+        return accumulatedPoints;
     }
 }
