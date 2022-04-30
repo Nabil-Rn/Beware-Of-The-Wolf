@@ -14,7 +14,10 @@ public class Wolf extends Actor
     GifImage wolf_Left = new GifImage("wolf-left.gif");
 
     static int nbEatenSheep;
-    int lostPoints;
+    public Wolf(){
+        nbEatenSheep = 0;
+        int lostPoints;
+    }
 
     /**
      * Act - do whatever the Lobster wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,6 +27,7 @@ public class Wolf extends Actor
         moveAround();
         eatFarmer();
         eatSheep();
+        getWorld().showText("Number of Remaining Worms is: "+ nbEatenSheep, 200, 200);
         if (isGameLost()) {
             transitionToGameOver();
         }
@@ -143,6 +147,7 @@ public class Wolf extends Actor
      */
     public boolean isGameLost()
     {
+        //nbEatenSheep = getWorld().getObjects(Sheep.class).size();
         if ( nbEatenSheep ==3  || getWorld().getObjects(Farmer.class).isEmpty()) {
             //If Wolf ate 3 Sheep (LifeParameter = 0), it's game over OR if Wolf ate Farmer, it's instant game over
             return true;
@@ -165,10 +170,10 @@ public class Wolf extends Actor
     }
 
     public static int getNbEatenSheep() { //count how many sheep the Wolf ate
-    return nbEatenSheep;
+        return nbEatenSheep;
     }
 
     public int getLostPoints(){ // punish -50pts for every sheep Wolf ate
-    return nbEatenSheep*(-50);
+        return nbEatenSheep*(-50);
     }
 }
