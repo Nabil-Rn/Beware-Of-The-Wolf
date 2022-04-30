@@ -27,8 +27,6 @@ public class Exit_Button extends Actor
 
         if (Greenfoot.mouseClicked(this))
         {   
-            //World MyWorld = getWorld();
-            //getWorld().stopped();
             System.exit(0);
         }
     }

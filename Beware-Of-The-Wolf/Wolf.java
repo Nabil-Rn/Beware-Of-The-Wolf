@@ -14,16 +14,7 @@ public class Wolf extends Actor
     GifImage wolf_Left = new GifImage("wolf-left.gif");
 
     static int nbEatenSheep;
-    static int losingPoints;
-
-    /**
-     * 
-     */
-    public Wolf()
-    {
-        nbEatenSheep = 0;
-        losingPoints = 0;
-    }
+    int lostPoints;
 
     /**
      * Act - do whatever the Lobster wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
@@ -133,8 +124,7 @@ public class Wolf extends Actor
             World world = getWorld();
             world.removeObject(sheep);
             Greenfoot.playSound("wolf-attack.wav");
-            nbEatenSheep++;
-            losingPoints -= 50;           
+            nbEatenSheep++;          
         }
     }
 
@@ -178,7 +168,7 @@ public class Wolf extends Actor
     return nbEatenSheep;
     }
 
-    public static int getLostPoints(){ // punish -50pts for every sheep Wolf ate
-    return getNbEatenSheep()*losingPoints;
+    public int getLostPoints(){ // punish -50pts for every sheep Wolf ate
+    return nbEatenSheep*(-50);
     }
 }

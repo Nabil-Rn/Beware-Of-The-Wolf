@@ -14,38 +14,32 @@ public class GameMenu extends World
      * Constructor for objects of class GameMenu.
      * 
      */
-    public GameMenu()
-    {    
+    public GameMenu() {    
         // Create a new world with 600x600 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
-        
-        //Menu Music
-        gameMenuMusic= new GreenfootSound("GameMenu_Faded.wav");
-        
-        //Game Menu Screen
+        gameMenuMusic = new GreenfootSound("GameMenu_Faded.wav");
         prepare();
     }
 
-    public void started()
-    {
+    public void started() {
         gameMenuMusic.playLoop();
     }
 
-    public void stopped()
-    {
+    public void stopped() {
         gameMenuMusic.stop();
     }
-    
+
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void prepare()
-    {
+    private void prepare() {
         Start_Button start_Button = new Start_Button();
         addObject(start_Button,170,365);
+        
         Controls_Button controls_Button = new Controls_Button();
         addObject(controls_Button,170,432);
+        
         Exit_Button exit_Button = new Exit_Button();
         addObject(exit_Button,170,499);
 

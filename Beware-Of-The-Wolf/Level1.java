@@ -9,35 +9,25 @@ import java.util.List;
  */
 public class Level1 extends World
 {
-    // To dynamically calculate the time step duration
-    private long lastFrameTimeMS;
-    private double timeStepDuration;
-
     private GreenfootSound farmWorldMusic;
+
     /**
      * Constructor for objects of class Level1.
      * 
      */
-    public Level1()
-    {    
+    public Level1() {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         farmWorldMusic = new GreenfootSound("FarmWorld_Faded.wav");  
         prepare();
-    }
 
-    public void act() {
-        // Update time step duration
-        timeStepDuration = (System.currentTimeMillis() - lastFrameTimeMS) / 1000.0;
-        lastFrameTimeMS = System.currentTimeMillis();
     }
 
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
-    private void prepare()
-    {
+    private void prepare() {
         Farmer farmer = new Farmer();
         addObject(farmer,101,73);
 
@@ -71,20 +61,16 @@ public class Level1 extends World
 
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
+        
     }
 
-    public double getTimeStepDuration()
-    {
-        return timeStepDuration;
-    }
-
-    public void started()
-    {
+    public void started() {
         farmWorldMusic.playLoop();
+        
     }
 
-    public void stopped()
-    {
+    public void stopped() {
         farmWorldMusic.stop();
+        
     }
 }
