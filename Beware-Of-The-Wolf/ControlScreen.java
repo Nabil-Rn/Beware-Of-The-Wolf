@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class ControlScreen extends World
-{
+{ 
     /**
      * Constructor for objects of class ControlScreen.
      * 
@@ -29,7 +29,6 @@ public class ControlScreen extends World
             World gameMenu = new GameMenu();
             Greenfoot.setWorld(gameMenu); 
             gameMenu.started();
-
         }
     }
 

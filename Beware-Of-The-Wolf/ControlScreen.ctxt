@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=ControlScreen
-comment0.text=\n\ Write\ a\ description\ of\ class\ ControlScreen\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ ControlScreen\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=ControlScreen()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ControlScreen.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ ControlScreen.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

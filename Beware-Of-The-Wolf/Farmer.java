@@ -47,7 +47,7 @@ public class Farmer extends Actor
         unlockFence();
         pickSheep();
         depositSheep();
-        getWorld().showText("Number of Remaining Worms is: "+ getWorld().getObjects(SafeSheep.class).size(), 200, 150);
+        //getWorld().showText("Number of Safe Sheep: "+ getWorld().getObjects(SafeSheep.class).size(), 300, 250);
         if (isGameWon()) {
             getWorld().stopped();
             transitionToGameWon();
@@ -179,8 +179,8 @@ public class Farmer extends Actor
     public void depositSheep() {
 
         //Position parameters X and Y for SafeSheep inside fence
-        int posX = 220 + Greenfoot.getRandomNumber(160);
-        int posY = 220 + Greenfoot.getRandomNumber(160);
+        int posX = 240 + Greenfoot.getRandomNumber(120);
+        int posY = 240 + Greenfoot.getRandomNumber(120);
 
         if (isSheepPicked){
 

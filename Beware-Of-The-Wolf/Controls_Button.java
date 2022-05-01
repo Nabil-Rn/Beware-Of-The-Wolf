@@ -31,6 +31,7 @@ public class Controls_Button extends Actor
             currentScreen.stopped();
             World controls =  new ControlScreen();
             Greenfoot.setWorld(controls);
+            controls.started();
             
         }
 

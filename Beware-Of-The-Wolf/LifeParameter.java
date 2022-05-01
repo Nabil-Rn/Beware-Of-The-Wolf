@@ -13,7 +13,6 @@ public class LifeParameter extends Actor
     private GreenfootImage heart3;
     
     Wolf wolf = (Wolf) new Wolf();
-    Farmer farmer = (Farmer) new Farmer();
     
     
     public LifeParameter() {

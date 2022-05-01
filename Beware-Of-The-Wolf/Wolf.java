@@ -27,7 +27,7 @@ public class Wolf extends Actor
         moveAround();
         eatFarmer();
         eatSheep();
-        getWorld().showText("Number of Remaining Worms is: "+ nbEatenSheep, 200, 200);
+        //getWorld().showText("Number of Eaten Sheep: "+ nbEatenSheep, 300, 300);
         if (isGameLost()) {
             transitionToGameOver();
         }
