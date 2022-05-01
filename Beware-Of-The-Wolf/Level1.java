@@ -45,9 +45,7 @@ public class Level1 extends World
         addObject(sheep3,507,195);
         Sheep sheep4 = new Sheep();
         addObject(sheep4,254,514);
-        Sheep sheep5 = new Sheep();
-        addObject(sheep5,411,82);
-        
+
         Key key = new Key();
         addObject(key,88,243);
 
@@ -68,7 +66,7 @@ public class Level1 extends World
 
         LifeParameter lifeParameter = new LifeParameter();
         addObject(lifeParameter,512,564);
-        
+
     }
 
     public void started() {

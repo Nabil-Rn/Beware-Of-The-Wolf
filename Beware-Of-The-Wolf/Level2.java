@@ -45,8 +45,6 @@ public class Level2 extends World
         addObject(sheep3,507,195);
         Sheep sheep4 = new Sheep();
         addObject(sheep4, 420,500);
-        Sheep sheep5 = new Sheep();
-        addObject(sheep5,164,501);
 
         Key key = new Key();
         addObject(key,504,120);
