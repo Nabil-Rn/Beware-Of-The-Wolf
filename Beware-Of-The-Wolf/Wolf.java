@@ -41,6 +41,7 @@ public class Wolf extends Actor
         int originalX = getX();
         int originalY = getY();
         int randNb, repeatNb;
+        move(2);
 
         if (Greenfoot.getRandomNumber(100) < 5)
         {
@@ -54,7 +55,7 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Right.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 7)
                     {
-                        setLocation(getX() - 10, getY());
+                        setRotation(0);
                         wolf_animation = wolf_Right.getCurrentImage();
                         setImage(wolf_animation);
                     }
@@ -68,7 +69,7 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Left.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 7)
                     {
-                        setLocation(getX() + 10, getY());
+                        setRotation(180);
                         wolf_animation = wolf_Left.getCurrentImage();
                         setImage(wolf_animation);
                     }
@@ -82,9 +83,7 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Down.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 20)
                     {
-                        //turn(270);
-                        //setRotation(270);
-                        setLocation(getX(), getY() + 20);
+                        setRotation(90);
                         wolf_animation = wolf_Down.getCurrentImage();
                         setImage(wolf_animation);
                     }
@@ -99,15 +98,16 @@ public class Wolf extends Actor
                     //wolf_animation = wolf_Up.getImages().get(0);
                     if (Greenfoot.getRandomNumber(100) < 20)
                     {
-                        setLocation(getX(), getY() - 20);
+                        setRotation(270);
                         wolf_animation = wolf_Up.getCurrentImage();
                         setImage(wolf_animation);
                     }
                 }
             }
-            if ( atWorldEdge() || isTouching(Fence.class) )
-            {   setLocation(originalX, originalY);
-            }
+
+        }
+        if (isTouching(Fence.class) || atWorldEdge() )
+        {   setLocation(originalX, originalY);
 
         }
     }
